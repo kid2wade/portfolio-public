@@ -66,4 +66,54 @@ A complete workflow for:
    git commit -m "Initial full backup"
    git push -u origin main
    ```
+
+---
+
+## Phase 2: Phase 2: Prep Rocky Linux VM
+
+### 2.1 System Update & LAMP Install
+   ```bash
+   sudo dnf update -y
+   sudo dnf install httpd mariadb-server php php-mysqlnd php-fpm php-opcache php-gd php-mbstring -y
+   sudo systemctl enable --now httpd mariadb
+   ```
+
+### 2.2 Database Setup & Import
+   ```bash
+   mysql -u root -p <<EOF
+   CREATE DATABASE portfolio;
+   CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'StrongPass!';
+   GRANT ALL ON portfolio.* TO 'wpuser'@'localhost';
+   FLUSH PRIVILEGES;
+   EOF
+
+   # On local machine:
+   mysqldump -u root -p myportfolio > dump.sql
+   scp dump.sql rocky@VM_IP:/home/rocky/
+   ssh rocky@VM_IP "mysql -u wpuser -p portfolio < /home/rocky/dump.sql"
+   ```
+
+### 2.3 WordPress Configuration & Permissions
+   ```bash
+   sudo mv /var/www/html/myportfolio /var/www/html/portfolio
+   sudo chown -R apache:apache /var/www/html/portfolio
+   sudo chmod -R 755 /var/www/html/portfolio
+   ```
+Edit /var/www/html/portfolio/wp-config.php to point at DB_NAME, DB_USER, DB_PASSWORD.
+
+
+### 2.4 Reset Admin Password if Login Loop
+   ```bash
+   wp user update admin --user_pass=NewStrongPass! --path=/var/www/html/portfolio
+   ```
+
+---
+
+## Phase 3: Cloud Deployment on Azure
+
+
+
+
+
+
     
