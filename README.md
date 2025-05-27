@@ -319,9 +319,9 @@ A sample .github/workflows/deploy.yml will appear here soon!
 - Migrate to containers (Docker + Kubernetes)
 
 ## References
-- Let’s Encrypt on CentOS 8 (DigitalOcean)
+- Let’s Encrypt on CentOS 8 (DigitalOcean) - https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-centos-8
 
-- OWASP ModSecurity CRS Quickstart
+- OWASP ModSecurity CRS Quickstart - https://coreruleset.org/docs/
 
-- Azure VM + NSG Docs
+- Azure VM + NSG Docs - https://learn.microsoft.com/en-gb/azure/virtual-network/network-overview
 
