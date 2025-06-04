@@ -292,7 +292,7 @@ Already included above in your SSL vhost:
 🚧 Work in progress — under testing!
 In the future, we’ll maintain:
 
-- Private repo (wordpress-portfolio-full) for code & DB dumps
+- Private repo for code & DB dumps
 
 - Public repo (portfolio-public) for docs & GitHub workflows
 
