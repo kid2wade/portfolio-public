@@ -302,7 +302,7 @@ When ready, on every push to main in the private repo we will:
 
  2. SSH-deploy updated files to the Azure VM
 
- 3. Optionally run wp search-replace for URL changes
+ 3. Run wp search-replace for URL changes
 
 Secrets like AZURE_SSH_KEY and VM_IP will be stored as GitHub repo secrets.
 A sample .github/workflows/deploy.yml will appear here soon!
